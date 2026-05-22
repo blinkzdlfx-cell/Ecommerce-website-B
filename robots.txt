@@ -7,6 +7,11 @@ Disallow: /forgot-password.html
 Disallow: /settings.html
 Disallow: /dashboard.html
 Disallow: /checkout.html
+Disallow: /cart.html
 Disallow: /success.html
+Disallow: /admin-blog.html
+Disallow: /admin-marketing.html
+Disallow: /admin-orders.html
+Disallow: /admin-products.html
 
-Sitemap: https://beulah-foods-store.pages.dev/sitemap.xml
+Sitemap: https://beulahfoods.com/sitemap.xml

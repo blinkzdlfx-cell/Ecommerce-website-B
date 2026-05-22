@@ -80,7 +80,7 @@ function renderProducts(products) {
     card.className = "product-card";
     card.dataset.id = product.id;
     card.innerHTML = `
-      <img src="${safeImageSrc(product.image)}" alt="${escapeHtml(product.name)}">
+      <img src="${safeImageSrc(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" decoding="async">
       <h3>${escapeHtml(product.name)}</h3>
       ${saleMarkup}
       ${stockMarkup}

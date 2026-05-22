@@ -71,9 +71,9 @@ function renderFeatured(post) {
 
   const tags = Array.isArray(post.tags) ? post.tags.slice(0, 3) : [];
   featuredEl.innerHTML = `
-    <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" />
+    <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" />
     <div>
-      <p class="blog-post-meta">Featured • ${formatDate(post.publishedAt || post.updatedAt)}</p>
+      <p class="blog-post-meta">Featured � ${formatDate(post.publishedAt || post.updatedAt)}</p>
       <h2>${escapeHtml(post.title)}</h2>
       <p>${escapeHtml(getExcerpt(post))}</p>
       <p class="blog-tag-line">${tags.map((tag) => `#${escapeHtml(tag)}`).join(" ")}</p>
@@ -98,7 +98,7 @@ function renderList(posts) {
     const card = document.createElement("article");
     card.className = "blog-card";
     card.innerHTML = `
-      <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" />
+      <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" />
       <div class="blog-card-body">
         <p class="blog-post-meta">${formatDate(post.publishedAt || post.updatedAt)}</p>
         <h3>${escapeHtml(post.title)}</h3>

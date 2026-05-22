@@ -170,10 +170,14 @@
     --text-light: #f1f1f1;
     --bg-light: #ffffff;
     --bg-offwhite: #f9faf8;
+    --surface-bg: #ffffff;
+    --surface-alt: #f5f8f3;
+    --surface-border: rgba(15, 61, 46, 0.09);
     --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
     --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
     --radius-lg: 16px;
     --radius-pill: 50px;
+    --section-width: min(1180px, calc(100% - 32px));
 }
 
 /* Dark mode */
@@ -205,6 +209,16 @@ html, body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(180deg, #fbfcfa 0%, var(--bg-light) 100%);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a {
@@ -297,7 +311,7 @@ img {
 /* HEADER – single reliable version */
 .site-header {
     width: 100%;
-    background-color: var(--primary-green);
+    background: rgba(15, 61, 46, 0.98);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -306,7 +320,8 @@ img {
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     margin: 0;
     box-sizing: border-box;
 }
@@ -547,10 +562,11 @@ nav ul li a.active {
     padding: 14px 36px;
     border-radius: var(--radius-pill);
     box-shadow: 0 6px 20px rgba(244, 196, 48, 0.35);
-    transition: all 0.35s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     border: none;
     cursor: pointer;
     font-size: 1.05rem;
+    letter-spacing: 0.01em;
 }
 
 .btn:hover,
@@ -597,9 +613,11 @@ nav ul li a.active {
 .shop-hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.6rem, 7.5vw, 4.4rem);
-  background-color: #f4c430;
-  border-radius: 8px;
- padding: 12px 20px;
+  display: inline-block;
+  background: rgba(244, 196, 48, 0.95);
+  color: var(--primary-green);
+  border-radius: 999px;
+  padding: 12px 22px;
   text-align: center;
   text-shadow: 0 4px 16px rgba(0,0,0,0.5);
 }
@@ -610,84 +628,67 @@ nav ul li a.active {
   margin: 0 auto;
   opacity: 0.94;
   line-height: 1.55;
-  font-weight: bold;  /* Changed to just 'bold' – or use 700 if you want a number */
+  font-weight: 600;
 }
 
 /* Fresh product card overrides – premium food styling */
 .product-card {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--surface-bg);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  transition: all 0.38s ease;
+  border: 1px solid var(--surface-border);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .product-card img {
-  height: auto;                /* Lets the image use its natural height based on width/proportions – no fixed size, fixes squishing/cropping */
-  max-height: 240px;           /* Optional: Prevents super-tall images from making cards too big; adjust to 300px or whatever fits your design */
-  object-fit: contain;         /* Shows the FULL image without cropping – scales to fit inside the container, keeps original shape */
-  object-position: center;     /* Centers the image horizontally/vertically if there's extra space */
-  background: #f8f9f6;         /* Neutral light background fills any empty space around the image (e.g., if image is narrow) – change to white (#ffffff) if you prefer */
-  width: 100%;                 /* Makes image fill the full width of the card */
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  object-position: center;
+  background: var(--surface-alt);
+  padding: 18px;
 }
 .product-card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
-  color: rgb(168, 200, 66);
+  color: var(--primary-green);
   margin: 20px 28px 8px;
 }
-
 .product-card .price {
   font-size: 1.4rem;
   font-weight: 700;
-  color: linear-gradient(135deg, var(--primary-green), #a8c824);
+  color: var(--primary-green);
   margin: 0 28px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
-
 .product-card .price-old {
   color: #8a9891;
   text-decoration: line-through;
   font-size: 1rem;
   font-weight: 600;
 }
-
 .product-card .btn {
-  margin: 0 auto 32px auto;    /* Centers the button with auto left/right margins, keeps bottom spacing for breathing room */
-  width: 80%;                  /* Sets to 80% of card width – less spread out; try 70% if you want even narrower */
-  max-width: 240px;            /* Caps max width at 240px for a compact, authentic button size on wide screens; adjust to 200px if too big */
-  padding: 14px 36px;          /* Keeps premium padding – matches your global .btn style */
-  border-radius: var(--radius-pill);  /* Pill shape for modern 2026 feel */
-  align-self: center;          /* Ensures perfect centering in the flex column */
-  transition: all 0.35s ease;  /* Smooth hover (already in global .btn, but reinforced) */
+  margin: 0 auto 28px auto;
+  width: calc(100% - 56px);
+  max-width: 240px;
+  align-self: center;
 }
-
-
-/* Extra authentic tweaks – premium 2026 polish */
-
-/* Softer card borders for trust/authenticity */
-.product-card {
-  border: 1px solid rgba(15, 61, 46, 0.08);  /* Subtle green-tint border – matches --primary-green */
-  border-radius: var(--radius-lg);          /* Keep rounded */
-}
-
-/* Hover glow for engaging feel */
 .product-card:hover {
-  border-color: var(--accent-yellow);       /* Yellow glow on hover – premium highlight */
-  transform: translateY(-4px) scale(1.02);  /* Slightly larger on hover for a more dynamic feel */
-    box-shadow: var(--shadow-hover); /* Yellow-tinted shadow on hover */
+  border-color: rgba(244, 196, 48, 0.5);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 .product-card .btn:hover {
-  background: var(--accent-yellow-dark); /* Darker yellow on button hover */
+  background: var(--accent-yellow-dark);
   color: var(--primary-green);
-  box-shadow: 0 12px 32px rgba(244, 196, 48, 0.5); /* Stronger shadow on button hover */
+  box-shadow: 0 12px 28px rgba(244, 196, 48, 0.42);
 }
-
 .product-card .description {
   padding: 0 28px 24px;
   font-size: 0.97rem;
@@ -700,25 +701,20 @@ nav ul li a.active {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-
 .product-stock {
   margin: 0 28px 14px;
   font-size: 0.9rem;
   font-weight: 700;
 }
-
 .product-stock.in {
   color: #1b7f3c;
 }
-
 .product-stock.out {
   color: #b3261e;
 }
-
 .shop-add-btn:disabled {
   cursor: not-allowed;
   opacity: 0.72;
-  box-shadow: none;
 }
 
 /* More grid spacing for airy layout */
@@ -1984,7 +1980,9 @@ nav ul li a.active {
   font-weight: 600;
 }
 
-.checkout-page h2 {
+.cart-page h1,
+  .checkout-page h1,
+  .checkout-page h2 {
   font-family: "Playfair Display", serif;
   font-size: clamp(1.8rem, 4.5vw, 2.4rem);
   color: var(--primary-green);
@@ -2664,10 +2662,10 @@ nav ul li a.active {
 }
 
 .blog-featured {
-  border: 1px solid #dee8dc;
+  border: 1px solid var(--surface-border);
   border-radius: 16px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--surface-bg);
   box-shadow: var(--shadow-soft);
   display: grid;
   grid-template-columns: minmax(220px, 36%) minmax(0, 1fr);
@@ -2698,23 +2696,31 @@ nav ul li a.active {
 }
 
 .blog-card {
-  background: #ffffff;
-  border: 1px solid #e2ebe0;
+  background: var(--surface-bg);
+  border: 1px solid var(--surface-border);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .blog-card img {
   width: 100%;
-  height: 190px;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  background: var(--surface-alt);
 }
 
 .blog-card-body {
   padding: 14px;
   display: grid;
   gap: 8px;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 196, 48, 0.4);
+  box-shadow: var(--shadow-hover);
 }
 
 .blog-post-page {
@@ -4044,4 +4050,62 @@ nav ul li a.active {
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+.auth-top-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+}
+
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 61, 46, 0.18);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--primary-green);
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.auth-back-link:hover,
+.auth-back-link:focus-visible {
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(15, 61, 46, 0.12);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .auth-top-actions {
+    margin-bottom: 14px;
+  }
+
+  .auth-back-link {
+    width: 100%;
+    justify-content: center;
+  }
 }
