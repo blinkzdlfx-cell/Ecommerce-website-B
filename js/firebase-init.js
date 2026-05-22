@@ -1,4 +1,4 @@
-﻿// js/firebase-init.js
+// js/firebase-init.js
 import "./page-loader.js";
 import "./cart-ui.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
@@ -30,9 +30,8 @@ const db = getFirestore(app);
 const AUTH_STATUS_MESSAGE_KEY = "beulah_auth_status_message";
 const AUTH_STATUS_TYPE_KEY = "beulah_auth_status_type";
 const LOGIN_MODAL_PENDING_KEY = "beulah_welcome_modal_pending";
-const PUBLIC_AUTH_PAGES = new Set(["auth.html", "forgot-password.html"]);
+const PUBLIC_AUTH_PAGES = new Set(["auth.html", "admin-auth.html", "forgot-password.html"]);
 const VERIFIED_GUARD_PAGES = new Set([
-  "checkout.html",
   "dashboard.html",
   "admin-orders.html",
   "admin-products.html",
@@ -826,7 +825,7 @@ async function logoutAndRedirect() {
     if (isAdminShellPage) {
       sessionStorage.setItem("redirectAfterLogin", getCurrentPageName());
     }
-    const redirectTarget = isAdminShellPage ? "auth.html?scope=admin" : "index.html";
+    const redirectTarget = isAdminShellPage ? "admin-auth.html" : "index.html";
     window.__beulahShowPageLoader?.();
     await signOut(auth);
     window.location.href = redirectTarget;
@@ -890,7 +889,7 @@ onAuthStateChanged(auth, async (user) => {
 
     if (VERIFIED_GUARD_PAGES.has(pageName)) {
       window.__beulahShowPageLoader?.();
-      window.location.href = "auth.html";
+      window.location.href = "admin-auth.html";
       return;
     }
 
@@ -972,7 +971,7 @@ document.getElementById("signupForm")?.addEventListener("submit", async (event) 
     await sendEmailVerification(credential.user);
     stashAuthStatus("Account created. Check your inbox to verify your email before signing in.", "success");
     await signOut(auth);
-    window.location.href = "auth.html";
+    window.location.href = "admin-auth.html";
   } catch (error) {
     alert(error.message);
   }
@@ -990,7 +989,7 @@ document.getElementById("loginForm")?.addEventListener("submit", async (event) =
     if (requiresEmailVerification(credential.user)) {
       stashAuthStatus("Verify your email from your inbox before signing in.", "error");
       await signOut(auth);
-      window.location.href = "auth.html";
+      window.location.href = "admin-auth.html";
       return;
     }
     sessionStorage.setItem(LOGIN_MODAL_PENDING_KEY, "1");

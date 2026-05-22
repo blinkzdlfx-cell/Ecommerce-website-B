@@ -1,4 +1,4 @@
-import { auth, waitForSiteExperienceSettings } from "./firebase-init.js";
+﻿import { auth, waitForSiteExperienceSettings } from "./firebase-init.js";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -18,14 +18,6 @@ const AUTH_STATUS_TYPE_KEY = "beulah_auth_status_type";
 const VERIFICATION_RESEND_KEY = "beulah_last_verification_email_sent_at";
 const VERIFICATION_RESEND_COOLDOWN_MS = 2 * 60 * 1000;
 const LOGIN_MODAL_PENDING_KEY = "beulah_welcome_modal_pending";
-const ADMIN_LOGIN_ONLY_PAGES = new Set([
-  "dashboard.html",
-  "admin-orders.html",
-  "admin-products.html",
-  "admin-marketing.html",
-  "admin-blog.html"
-]);
-
 const form = document.getElementById("auth-form");
 const toggle = document.getElementById("toggle-auth");
 const title = document.getElementById("auth-title");
@@ -34,13 +26,16 @@ const fullNameInput = document.getElementById("full-name");
 const googleButton = document.getElementById("google-signin");
 const statusEl = document.getElementById("auth-status");
 const authScope = new URLSearchParams(window.location.search).get("scope");
-const redirectAfterLoginValue = String(sessionStorage.getItem("redirectAfterLogin") || "")
-  .trim()
-  .toLowerCase()
-  .split(/[?#]/)[0]
-  .split("/")
-  .pop();
-const adminLoginOnly = authScope === "admin" || ADMIN_LOGIN_ONLY_PAGES.has(redirectAfterLoginValue);
+const currentPageName = String(window.location.pathname || "").split("/").pop() || "auth.html";
+const isAdminAuthPage = currentPageName === "admin-auth.html";
+const adminLoginOnly = authScope === "admin" || isAdminAuthPage;
+const ADMIN_REDIRECT_PAGES = new Set([
+  "dashboard.html",
+  "admin-orders.html",
+  "admin-products.html",
+  "admin-marketing.html",
+  "admin-blog.html"
+]);
 
 function mapGoogleError(error) {
   if (error?.code === "auth/unauthorized-domain") {
@@ -51,7 +46,7 @@ function mapGoogleError(error) {
 
 function setAuthMode(nextIsSignup) {
   isSignup = adminLoginOnly ? false : Boolean(nextIsSignup);
-  title.textContent = isSignup ? "Create Account" : "Sign In";
+  title.textContent = adminLoginOnly ? "Admin Sign In" : (isSignup ? "Create Account" : "Sign In");
   if (nameGroup) {
     nameGroup.hidden = !isSignup;
     nameGroup.style.display = isSignup ? "grid" : "none";
@@ -184,7 +179,15 @@ async function playSignInCelebration() {
 
 async function redirectSignedInUser(options = {}) {
   const celebrate = Boolean(options.celebrate);
-  const redirect = sessionStorage.getItem("redirectAfterLogin") || "index.html";
+  const storedRedirect = String(sessionStorage.getItem("redirectAfterLogin") || "")
+    .trim()
+    .toLowerCase()
+    .split(/[?#]/)[0]
+    .split("/")
+    .pop();
+  const redirect = adminLoginOnly
+    ? (ADMIN_REDIRECT_PAGES.has(storedRedirect) ? storedRedirect : "dashboard.html")
+    : (storedRedirect && !ADMIN_REDIRECT_PAGES.has(storedRedirect) ? storedRedirect : "index.html");
   sessionStorage.removeItem("redirectAfterLogin");
   sessionStorage.setItem(LOGIN_MODAL_PENDING_KEY, "1");
   authFlowInProgress = true;
@@ -332,3 +335,7 @@ onAuthStateChanged(auth, async (user) => {
 
   void redirectSignedInUser();
 });
+
+
+
+

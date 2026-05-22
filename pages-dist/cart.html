@@ -87,48 +87,20 @@
     <script src="js/hamburger.js"></script>
     <!-- Add any other scripts here -->
 
-    <!-- PASTE THE AUTH MODAL HERE in EVERY HTML FILE -->
-   <div id="auth-modal" class="auth-modal hidden">
-    <div class="auth-modal-content" style="background:#ffffff;">
-       <button class="auth-close">×</button>
-        <h2 id="modal-title">Sign In</h2>
-        <form id="auth-form">
-       <input type="password" id="password-input" class="auth-input" placeholder="Password" required>
-        
-       <button id="auth-submit" class="btn auth-submit">Sign In</button>
-        </form>
-        <p style="margin: 16px 0;">
-<button id="toggle-mode" class="auth-toggle">
-Create new account instead
-</button>
-        </p>
-        
-        <hr style="margin: 20px 0;">
-        
-       <button id="google-btn" class="google-btn">
-          Continue with Google
-        </button>
+       <div id="guest-auth-modal" class="auth-modal hidden" aria-hidden="true">
+    <div class="auth-modal-content guest-auth-card" role="dialog" aria-modal="true" aria-labelledby="guest-auth-title">
+       <button class="auth-close" type="button" aria-label="Close">×</button>
+       <p class="guest-auth-kicker" data-guest-auth-kicker>Sign in required</p>
+       <h2 id="guest-auth-title" data-guest-auth-title>Sign in to view your cart</h2>
+       <p class="guest-auth-copy" data-guest-auth-copy>You can browse products without logging in, but signing in keeps checkout ready and saves your experience.</p>
+       <div class="guest-auth-actions">
+         <a class="btn guest-auth-primary" data-guest-auth-signin href="auth.html">Sign In / Sign Up</a>
+         <button class="btn-outline guest-auth-secondary" type="button" data-guest-auth-secondary>Continue Shopping</button>
+       </div>
       </div>
     </div>
 
-  <script>
-  // Dropdown close handler can be added here if needed.
-  </script>
-
-
-
-<script>
-document.getElementById("go-to-checkout")?.addEventListener("click", () => {
-  window.__beulahPlayTapSound?.("checkout");
-  window.__beulahShowPageLoader?.();
-  window.location.href = "checkout.html";
-});
-</script>
-
-<script type="module" src="js/firebase-init.js"></script>
+  <script type="module" src="js/guest-auth-gate.js"></script>
+  <script type="module" src="js/firebase-init.js"></script>
 </body>
 </html>
-
-
-
-

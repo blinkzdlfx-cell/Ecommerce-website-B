@@ -402,7 +402,7 @@ async function forceAdminReauth(message = "Admin session expired. Please sign in
     // Ignore sign-out errors and continue redirecting.
   }
   window.__beulahShowPageLoader?.();
-  window.location.href = "auth.html?scope=admin";
+  window.location.href = "admin-auth.html";
 }
 
 function bindAdminSessionGuard() {
@@ -1842,7 +1842,7 @@ onAuthStateChanged(auth, async (user) => {
     sessionStorage.setItem("redirectAfterLogin", currentAdminPage);
     clearAdminIdleTimer();
     window.__beulahShowPageLoader?.();
-    window.location.href = "auth.html?scope=admin";
+    window.location.href = "admin-auth.html";
     return;
   }
 

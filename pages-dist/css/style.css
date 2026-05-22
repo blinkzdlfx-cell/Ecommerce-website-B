@@ -4109,3 +4109,73 @@ nav ul li a.active {
     justify-content: center;
   }
 }
+
+
+.guest-auth-open {
+  overflow: hidden;
+}
+
+.guest-auth-card {
+  position: relative;
+  max-width: 460px;
+  padding-top: 34px;
+}
+
+.guest-auth-kicker {
+  margin: 0 0 8px;
+  color: #6c7f72;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.guest-auth-card h2 {
+  margin: 0 0 10px;
+  color: var(--primary-green);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.15;
+}
+
+.guest-auth-copy {
+  margin: 0;
+  color: #506257;
+  line-height: 1.6;
+}
+
+.guest-auth-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.guest-auth-primary,
+.guest-auth-secondary {
+  flex: 1 1 180px;
+  text-align: center;
+}
+
+.guest-auth-secondary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (max-width: 640px) {
+  .guest-auth-card {
+    padding: 28px 18px 18px;
+  }
+
+  .guest-auth-actions {
+    flex-direction: column;
+  }
+
+  .guest-auth-primary,
+  .guest-auth-secondary {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}

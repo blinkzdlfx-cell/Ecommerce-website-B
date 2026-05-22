@@ -318,9 +318,9 @@ async function startPayment() {
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    sessionStorage.setItem("redirectAfterLogin", "checkout.html");
-    window.__beulahShowPageLoader?.();
-    window.location.href = "auth.html";
+    setPayButton(true, "Sign in to Checkout");
+    setFeedback("Please sign in or create an account to continue checkout.", "info");
+    window.__beulahShowGuestAuthModal?.("checkout.html");
     return;
   }
 
@@ -366,7 +366,7 @@ onAuthStateChanged(auth, async (user) => {
     if (summary?.couponCode) {
       activeCouponCode = summary.couponCode;
       if (couponInputEl) couponInputEl.value = activeCouponCode;
-      setCouponFeedback(`Coupon ${activeCouponCode} applied.`, "success");
+      setCouponFeedback(Coupon  applied., "success");
     } else {
       setCouponFeedback("");
     }
