@@ -526,7 +526,7 @@ nav ul li a.active {
 .hero {
     min-height: 60vh;
     background: linear-gradient(rgba(15, 61, 46, 0.78), rgb(168, 200, 66)),
-                url("../images/hero.jpg") center/cover no-repeat;
+                image-set(url("../images/hero.webp") type("image/webp"), url("../images/hero.jpg") type("image/jpeg")) center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -923,7 +923,7 @@ nav ul li a.active {
   background:
     linear-gradient(135deg, rgba(15, 61, 46, 0.9), rgba(26, 63, 50, 0.86)),
     radial-gradient(circle at top right, rgba(244, 196, 48, 0.18), transparent 34%),
-    url("../images/hero.jpg") center/cover no-repeat;
+    image-set(url("../images/hero.webp") type("image/webp"), url("../images/hero.jpg") type("image/jpeg")) center/cover no-repeat;
   text-align: left;
 }
 
