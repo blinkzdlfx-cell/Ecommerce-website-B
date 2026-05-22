@@ -3,6 +3,8 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 import { callAuthedFunction } from "./api.js";
 
 const adminView = document.body?.dataset.adminView || "overview";
+const AUTH_STATUS_MESSAGE_KEY = "beulah_auth_status_message";
+const AUTH_STATUS_TYPE_KEY = "beulah_auth_status_type";
 const currentAdminPage = (() => {
   const file = String(window.location.pathname || "").split("/").pop();
   return file || "dashboard.html";
@@ -723,6 +725,21 @@ function renderBlogPosts(items) {
     `;
     blogBodyEl.appendChild(row);
   });
+}
+
+function stashAuthStatus(message, type = "error") {
+  const text = String(message || "").trim();
+  if (!text) return;
+  sessionStorage.setItem(AUTH_STATUS_MESSAGE_KEY, text);
+  sessionStorage.setItem(AUTH_STATUS_TYPE_KEY, type);
+}
+
+async function verifyAdminAccess() {
+  const response = await callAuthedFunction(auth, "adminWhoAmI", {});
+  if (!response?.isAdmin) {
+    throw new Error("This account is not authorized for admin access.");
+  }
+  return response;
 }
 
 function showForbiddenState(message) {
@@ -1849,8 +1866,16 @@ onAuthStateChanged(auth, async (user) => {
   try {
     window.__beulahShowPageLoader?.();
     bindAdminSessionGuard();
+    await verifyAdminAccess();
     await waitForSessionAccess();
     await refreshDashboard();
+  } catch (error) {
+    const message = error?.message || "This account is not authorized for admin access.";
+    stashAuthStatus(message, "error");
+    clearAdminIdleTimer();
+    adminLocked = true;
+    await signOut(auth).catch(() => {});
+    window.location.href = "admin-auth.html";
   } finally {
     window.__beulahHidePageLoader?.();
   }

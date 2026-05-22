@@ -1,0 +1,34 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4] [cursor=pointer]: Menu
+      - generic [ref=e5]:
+        - img "Beulah Foods Logo" [ref=e6]
+        - generic [ref=e7]: Beulah Foods
+    - link "Sign In or Sign Up" [ref=e9] [cursor=pointer]:
+      - /url: auth.html
+      - text: Sign In
+  - generic [ref=e10]:
+    - heading "Your Cart" [level=1] [ref=e11]
+    - paragraph [ref=e13]: Your cart is empty.
+    - 'heading "Total: NGN 0" [level=3] [ref=e14]'
+    - button "Proceed to Checkout" [ref=e15] [cursor=pointer]
+  - contentinfo [ref=e16]:
+    - paragraph [ref=e17]: (c) 2026 Beulah Foods. All rights reserved.
+    - paragraph [ref=e18]:
+      - text: "WhatsApp:"
+      - link "07044845526" [ref=e19] [cursor=pointer]:
+        - /url: https://wa.me/2347044845526
+      - text: "| Email:"
+      - link "beulahfoods2025@gmail.com" [ref=e20] [cursor=pointer]:
+        - /url: mailto:beulahfoods2025@gmail.com
+  - dialog [ref=e22]:
+    - button [ref=e23] [cursor=pointer]: ×
+    - paragraph [ref=e24]: Sign in required
+    - heading [level=2] [ref=e25]: Sign in to view your cart
+    - paragraph [ref=e26]: You can browse products without logging in, but signing in keeps checkout ready and saves your experience.
+    - generic [ref=e27]:
+      - link [ref=e28] [cursor=pointer]:
+        - /url: auth.html
+        - text: Sign In / Sign Up
+      - button [ref=e29]: Continue Shopping

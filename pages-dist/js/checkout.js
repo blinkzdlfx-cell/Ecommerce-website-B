@@ -17,10 +17,12 @@ const cancelPaymentDismissBtn = document.getElementById("cancel-payment-dismiss-
 const cancelPaymentConfirmBtn = document.getElementById("cancel-payment-confirm-btn");
 
 const CART_KEY = "beulah_cart";
+const PAYSTACK_SCRIPT_SRC = "https://js.paystack.co/v1/inline.js";
 
 let activeCheckoutSession = null;
 let checkoutVerificationReady = false;
 let activeCouponCode = "";
+let paystackScriptPromise = null;
 
 function setPayButton(disabled, text) {
   if (!payBtn) return;
@@ -84,6 +86,39 @@ function notifyCartUpdate(cart = {}) {
 function clearCartSnapshot() {
   localStorage.removeItem(CART_KEY);
   notifyCartUpdate({});
+}
+
+function loadPaystackScript() {
+  if (window.PaystackPop && typeof window.PaystackPop.setup === "function") {
+    return Promise.resolve(window.PaystackPop);
+  }
+
+  if (paystackScriptPromise) {
+    return paystackScriptPromise;
+  }
+
+  paystackScriptPromise = new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${PAYSTACK_SCRIPT_SRC}"]`);
+    if (existingScript && window.PaystackPop && typeof window.PaystackPop.setup === "function") {
+      resolve(window.PaystackPop);
+      return;
+    }
+
+    const script = existingScript || document.createElement("script");
+    script.src = PAYSTACK_SCRIPT_SRC;
+    script.async = true;
+    script.onload = () => resolve(window.PaystackPop);
+    script.onerror = () => {
+      paystackScriptPromise = null;
+      reject(new Error("Paystack library failed to load. Please refresh and try again."));
+    };
+
+    if (!existingScript) {
+      document.head.appendChild(script);
+    }
+  });
+
+  return paystackScriptPromise;
 }
 
 function resetCheckoutAfterCancel() {
@@ -264,9 +299,7 @@ async function startPayment() {
 
     setFeedback("Checkout session ready. Opening payment window...", "info");
 
-    if (!window.PaystackPop || typeof window.PaystackPop.setup !== "function") {
-      throw new Error("Paystack library failed to load. Please refresh and try again.");
-    }
+    await loadPaystackScript();
 
     const onPaystackSuccess = function () {
       setPayButton(true, "Verifying...");
@@ -366,7 +399,7 @@ onAuthStateChanged(auth, async (user) => {
     if (summary?.couponCode) {
       activeCouponCode = summary.couponCode;
       if (couponInputEl) couponInputEl.value = activeCouponCode;
-      setCouponFeedback(Coupon  applied., "success");
+      setCouponFeedback(`Coupon ${activeCouponCode} applied.`, "success");
     } else {
       setCouponFeedback("");
     }

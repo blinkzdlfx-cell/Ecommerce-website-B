@@ -1,4 +1,5 @@
 ﻿import { auth, waitForSiteExperienceSettings } from "./firebase-init.js";
+import { callAuthedFunction } from "./api.js";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -42,6 +43,14 @@ function mapGoogleError(error) {
     return "Google sign-in failed: this domain is not authorized in Firebase Auth settings.";
   }
   return error.message;
+}
+
+async function verifyAdminAccess() {
+  if (!adminLoginOnly) return;
+  const response = await callAuthedFunction(auth, "adminWhoAmI", {});
+  if (!response?.isAdmin) {
+    throw new Error("This account is not authorized for admin access.");
+  }
 }
 
 function setAuthMode(nextIsSignup) {
@@ -191,12 +200,28 @@ async function redirectSignedInUser(options = {}) {
   sessionStorage.removeItem("redirectAfterLogin");
   sessionStorage.setItem(LOGIN_MODAL_PENDING_KEY, "1");
   authFlowInProgress = true;
-  if (celebrate) {
+
+  try {
+    if (adminLoginOnly) {
+      await verifyAdminAccess();
+    }
+
+    if (celebrate) {
+      window.__beulahHidePageLoader?.();
+      await playSignInCelebration();
+    }
+
+    window.__beulahShowPageLoader?.();
+    window.location.href = redirect;
+  } catch (error) {
+    authFlowInProgress = false;
+    sessionStorage.removeItem("beulah_welcome_modal_pending");
+    stashAuthStatus(error?.message || "This account is not authorized for admin access.", "error");
+    await signOut(auth).catch(() => {});
+    const notice = consumeAuthStatus();
+    setAuthStatus(notice.message, notice.type || "error");
     window.__beulahHidePageLoader?.();
-    await playSignInCelebration();
   }
-  window.__beulahShowPageLoader?.();
-  window.location.href = redirect;
 }
 
 function mapAuthError(error) {

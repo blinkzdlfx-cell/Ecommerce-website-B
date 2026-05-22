@@ -1,0 +1,69 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - img "Beulah Foods Logo" [ref=e5]
+      - generic [ref=e6]: Beulah Foods
+    - navigation [ref=e7]:
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=e11]:
+          - link "Shop" [ref=e12] [cursor=pointer]:
+            - /url: shop.html
+        - listitem [ref=e13]:
+          - link "Blog" [ref=e14] [cursor=pointer]:
+            - /url: blog.html
+        - listitem [ref=e15]:
+          - link "Contact / Help" [ref=e16] [cursor=pointer]:
+            - /url: contact.html
+    - link "Sign In / Sign Up" [ref=e18] [cursor=pointer]:
+      - /url: auth.html
+  - main [ref=e19]:
+    - link "Back to Cart" [ref=e20] [cursor=pointer]:
+      - /url: cart.html
+    - heading "Checkout" [level=1] [ref=e21]
+    - generic [ref=e22]:
+      - heading "Your Items" [level=3] [ref=e24]
+      - complementary [ref=e25]:
+        - heading "Order Summary" [level=3] [ref=e26]
+        - generic [ref=e27]:
+          - generic [ref=e28]: Subtotal
+          - generic [ref=e29]: NGN 0
+        - generic [ref=e30]:
+          - generic [ref=e31]: Discount Code
+          - generic [ref=e32]:
+            - textbox "Discount Code" [ref=e33]:
+              - /placeholder: Enter code e.g. SAVE10
+            - button "Apply" [ref=e34]
+          - paragraph [ref=e35]
+        - generic [ref=e36]:
+          - heading "Delivery" [level=4] [ref=e37]
+          - generic [ref=e38]:
+            - generic [ref=e39]: Location
+            - generic [ref=e40]: Lagos (default)
+          - generic [ref=e41]:
+            - generic [ref=e42]: Delivery Fee
+            - generic [ref=e43]: To be confirmed
+        - generic [ref=e44]:
+          - generic [ref=e45]: Discount
+          - generic [ref=e46]: NGN 0
+        - generic [ref=e47]:
+          - strong [ref=e48]: Total
+          - strong [ref=e49]: NGN 0
+        - generic [ref=e50]:
+          - button "Confirm & Pay" [disabled] [ref=e51] [cursor=pointer]
+          - button "Cancel Payment" [ref=e52] [cursor=pointer]
+  - generic [ref=e53]:
+    - text: Order Reference
+    - strong [ref=e54]: "-"
+  - dialog [ref=e56]:
+    - button [ref=e57] [cursor=pointer]: ×
+    - paragraph [ref=e58]: Sign in required
+    - heading [level=2] [ref=e59]: Sign in to finish checkout
+    - paragraph [ref=e60]: You can browse the store without logging in, but checkout needs a signed-in account.
+    - generic [ref=e61]:
+      - link [ref=e62] [cursor=pointer]:
+        - /url: auth.html
+        - text: Sign In / Sign Up
+      - button [ref=e63]: Back to Cart

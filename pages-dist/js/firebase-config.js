@@ -1,6 +1,6 @@
 // js/firebase-config.js
 export const firebaseConfig = {
-  apiKey: "AIzaSyCVF6youN4wNJEbRFuEAnRAzTVsddkYEMg",          // ← your real apiKey from Firebase
+  apiKey: "AIzaSyCVF6youN4wNJEbRFuEAnRAzTVsddkYEMg",          // Firebase apiKey
   authDomain: "beulah-foods-online-store.firebaseapp.com",
   projectId: "beulah-foods-online-store",
   storageBucket: "beulah-foods-online-store.firebasestorage.app",

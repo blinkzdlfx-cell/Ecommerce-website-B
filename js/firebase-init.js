@@ -22,7 +22,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 import { firebaseConfig } from "./firebase-config.js";
-import { getFunctionUrl } from "./api.js";
+import { getFunctionUrl, callAuthedFunction } from "./api.js";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -96,6 +96,14 @@ export function waitForSessionAccess() {
 
 export function waitForSiteExperienceSettings() {
   return siteExperienceReadyPromise;
+}
+
+async function ensureAdminShellAccess() {
+  if (!isAdminShellPage) return;
+  const response = await callAuthedFunction(auth, "adminWhoAmI", {});
+  if (!response?.isAdmin) {
+    throw new Error("This account is not authorized for admin access.");
+  }
 }
 
 function clamp(value, min, max) {
@@ -875,6 +883,23 @@ onAuthStateChanged(auth, async (user) => {
       await user.reload();
     } catch {
       // Ignore refresh errors and use the current auth state.
+    }
+  }
+
+  if (isAdminShellPage && user) {
+    try {
+      await ensureAdminShellAccess();
+    } catch (error) {
+      stashAuthStatus(error?.message || "This account is not authorized for admin access.", "error");
+      clearLockWatchers();
+      hideSiteLockOverlay();
+      await signOut(auth).catch(() => {});
+      currentUser = null;
+      syncLocalUser(null);
+      renderAuthUI(null);
+      releaseSessionAccess();
+      window.location.href = "admin-auth.html";
+      return;
     }
   }
 

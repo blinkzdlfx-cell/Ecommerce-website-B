@@ -1,0 +1,31 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - link "Back to Home" [ref=e5] [cursor=pointer]:
+      - /url: index.html
+    - generic [ref=e6]:
+      - img "Beulah Foods Logo" [ref=e7]
+      - generic [ref=e8]:
+        - paragraph [ref=e9]: Beulah Foods
+        - heading "Sign In" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Healthy Nigerian staples, delivered fresh.
+    - generic [ref=e12]:
+      - generic [ref=e13]: Email
+      - textbox "Email" [ref=e14]:
+        - /placeholder: you@example.com
+      - generic [ref=e15]: Password
+      - textbox "Password" [ref=e16]:
+        - /placeholder: Enter your password
+      - link "Forgot password?" [ref=e17] [cursor=pointer]:
+        - /url: forgot-password.html
+      - button "Continue" [ref=e18] [cursor=pointer]
+    - generic [ref=e20]: or
+    - button "Continue with Google" [ref=e21] [cursor=pointer]
+    - paragraph [ref=e22]: Don't have an account? Create one
+    - paragraph [ref=e23]:
+      - text: By continuing, you agree to our
+      - link "Terms of Service" [ref=e24] [cursor=pointer]:
+        - /url: terms.html
+      - text: and
+      - link "Privacy Policy" [ref=e25] [cursor=pointer]:
+        - /url: privacy.html
+      - text: .

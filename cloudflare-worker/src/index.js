@@ -196,6 +196,10 @@ export default {
         return await withAuth(request, env, adminGetSiteExperience);
       }
 
+      if (path === "/adminWhoAmI") {
+        return await withAuth(request, env, adminWhoAmI);
+      }
+
       if (path === "/adminUpsertSiteExperience") {
         return await withAuth(request, env, adminUpsertSiteExperience);
       }
@@ -851,6 +855,21 @@ async function bootstrapAdminAccess({ request, env, user }) {
     {
       ok: true,
       message: "Admin access is active for this signed-in account."
+    },
+    200
+  );
+}
+
+async function adminWhoAmI({ request, env, user }) {
+  requireAdminUser(user, env);
+  return json(
+    request,
+    env,
+    {
+      ok: true,
+      isAdmin: true,
+      uid: String(user?.uid || ""),
+      email: normalizeEmail(user?.email || "")
     },
     200
   );
