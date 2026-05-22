@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Browse Beulah Foods products including plantain flour, rice flour, guinea corn flour, and iru ekiti."
+  />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://beulahfoods.com/shop.html" />
+  <meta property="og:title" content="Shop | Beulah Foods" />
+  <meta property="og:description" content="Order healthy Nigerian flours and staples from Beulah Foods." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://beulahfoods.com/shop.html" />
+  <meta property="og:image" content="https://beulahfoods.com/images/logo.png" />
+  <title>Shop - Beulah Foods</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo" />
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn-glass logout-mobile">Log Out</button>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="settings.html" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<section class="featured-products shop-page">
+  <div class="shop-title-wrapper">
+    <h2 class="shop-title">Our Signature Collection</h2>
+  </div>
+
+  <div id="shop-product-list" class="product-list"></div>
+
+  <div class="shop-quick-actions shop-quick-actions-bottom">
+    <span class="shop-quick-label">Done adding items?</span>
+    <a href="cart.html" class="go-to-cart-btn shop-cart-shortcut">Go to Cart</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+<div class="product-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <img id="modal-image" src="" alt="Product Image" />
+    <h3 id="modal-title"></h3>
+    <div class="price" id="modal-price"></div>
+    <p id="modal-description"></p>
+  </div>
+</div>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/shop-page.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+
+</body>
+</html>
+

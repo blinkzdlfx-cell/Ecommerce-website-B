@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beulah Foods admin orders workspace." />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin Orders | Beulah Foods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+  <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body class="admin-control-body" data-admin-shell="true" data-admin-view="orders">
+<header class="admin-topbar">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area admin-logo-area">
+      <img src="images/beulah-logop.jpg" alt="Beulah Foods Admin">
+      <div class="admin-brand-copy">
+        <span class="brand-text">Beulah Admin</span>
+        <span class="admin-brand-sub">Orders</span>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="dashboard.html">Overview</a></li>
+      <li><a href="admin-orders.html" class="active">Orders</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-marketing.html">Marketing</a></li>
+      <li><a href="admin-blog.html">Blog</a></li>
+    </ul>
+  </nav>
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In</a>
+  </div>
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn-glass" type="button">Log Out</button>
+    </div>
+  </div>
+</header>
+<main class="admin-page">
+  <section class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="admin-kicker">Orders Workspace</p>
+        <h1>Orders and Payments</h1>
+        <p>Review transaction history, search customers, and filter payment activity.</p>
+      </div>
+      <div class="admin-toolbar">
+        <label for="admin-status-filter">Status</label>
+        <select id="admin-status-filter" class="admin-select">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="paid">Paid</option>
+        </select>
+        <input id="admin-order-search" class="admin-input" type="search" placeholder="Search order ref or customer" aria-label="Search orders" />
+        <label for="admin-date-from">From</label>
+        <input id="admin-date-from" class="admin-date" type="date" />
+        <label for="admin-date-to">To</label>
+        <input id="admin-date-to" class="admin-date" type="date" />
+        <button id="admin-clear-filters-btn" class="btn-outline admin-clear-btn" type="button">Clear</button>
+        <button id="admin-refresh-btn" class="btn-outline" type="button">Refresh</button>
+      </div>
+    </header>
+    <p id="admin-access-note" class="admin-access-note"></p>
+    <p id="admin-results-meta" class="admin-results-meta" aria-live="polite"></p>
+    <button id="admin-bootstrap-btn" class="btn-outline admin-bootstrap-btn" style="display:none;">Activate Admin Access</button>
+    <section id="admin-stats" class="admin-stats" aria-label="Order stats">
+      <article class="admin-stat-card"><span>Total Orders</span><strong id="stat-total">0</strong></article>
+      <article class="admin-stat-card"><span>Paid</span><strong id="stat-paid">0</strong></article>
+      <article class="admin-stat-card"><span>Pending</span><strong id="stat-pending">0</strong></article>
+    </section>
+    <section id="admin-orders-section" class="admin-orders">
+      <div class="admin-table-wrap">
+        <table class="admin-orders-table" aria-label="Orders list">
+          <thead>
+            <tr>
+              <th>Order Ref</th>
+              <th>Customer</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-body"></tbody>
+        </table>
+      </div>
+      <p id="admin-empty-state" class="admin-empty-state">No orders found for this filter.</p>
+    </section>
+  </section>
+</main>
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/dashboard-admin.js"></script>
+</body>
+</html>

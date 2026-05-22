@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beulah Foods admin marketing workspace." />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin Marketing | Beulah Foods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+  <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body class="admin-control-body" data-admin-shell="true" data-admin-view="marketing">
+<header class="admin-topbar">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area admin-logo-area">
+      <img src="images/beulah-logop.jpg" alt="Beulah Foods Admin">
+      <div class="admin-brand-copy">
+        <span class="brand-text">Beulah Admin</span>
+        <span class="admin-brand-sub">Marketing</span>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="dashboard.html">Overview</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-marketing.html" class="active">Marketing</a></li>
+      <li><a href="admin-blog.html">Blog</a></li>
+    </ul>
+  </nav>
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In</a>
+  </div>
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn-glass" type="button">Log Out</button>
+    </div>
+  </div>
+</header>
+<main class="admin-page">
+  <section class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="admin-kicker">Campaign Workspace</p>
+        <h1>Marketing</h1>
+        <p>Run announcement banners and coupon campaigns without mixing them with product tasks.</p>
+      </div>
+    </header>
+    <p id="admin-access-note" class="admin-access-note"></p>
+    <button id="admin-bootstrap-btn" class="btn-outline admin-bootstrap-btn" style="display:none;">Activate Admin Access</button>
+    <section id="admin-marketing-section" class="admin-products admin-products-standalone">
+      <div class="admin-marketing-grid">
+        <section class="admin-marketing-card">
+          <h3>Announcement</h3>
+          <form id="admin-announcement-form" class="admin-product-form">
+            <input id="admin-announcement-id" type="hidden" />
+            <label for="admin-announcement-title">Title</label>
+            <input id="admin-announcement-title" class="admin-input" type="text" required />
+            <label for="admin-announcement-message">Message</label>
+            <textarea id="admin-announcement-message" class="admin-textarea" rows="3" required></textarea>
+            <label for="admin-announcement-type">Type</label>
+            <select id="admin-announcement-type" class="admin-select">
+              <option value="info">Info</option>
+              <option value="success">Success</option>
+              <option value="warning">Warning</option>
+            </select>
+            <label for="admin-announcement-start">Start (optional)</label>
+            <input id="admin-announcement-start" class="admin-date" type="datetime-local" />
+            <label for="admin-announcement-end">End (optional)</label>
+            <input id="admin-announcement-end" class="admin-date" type="datetime-local" />
+            <label class="admin-switch-row">
+              <input id="admin-announcement-active" type="checkbox" checked />
+              <span>Active</span>
+            </label>
+            <div class="admin-product-actions">
+              <button id="admin-announcement-save" class="btn-outline" type="submit">Save Announcement</button>
+              <button id="admin-announcement-clear" class="btn-outline" type="button">Clear</button>
+            </div>
+          </form>
+          <p id="admin-announcement-note" class="admin-product-note"></p>
+          <div class="admin-table-wrap">
+            <table class="admin-orders-table" aria-label="Announcements">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-announcements-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-marketing-card">
+          <h3>Coupons</h3>
+          <form id="admin-coupon-form" class="admin-product-form">
+            <input id="admin-coupon-id" type="hidden" />
+            <label for="admin-coupon-code">Code</label>
+            <input id="admin-coupon-code" class="admin-input" type="text" required />
+            <label for="admin-coupon-type">Type</label>
+            <select id="admin-coupon-type" class="admin-select">
+              <option value="percent">Percent Off</option>
+              <option value="fixed">Fixed Amount</option>
+            </select>
+            <label for="admin-coupon-value">Value</label>
+            <input id="admin-coupon-value" class="admin-input" type="number" min="1" required />
+            <label for="admin-coupon-min-subtotal">Minimum Subtotal (optional)</label>
+            <input id="admin-coupon-min-subtotal" class="admin-input" type="number" min="0" />
+            <label for="admin-coupon-description">Description</label>
+            <input id="admin-coupon-description" class="admin-input" type="text" placeholder="e.g. Weekend promo" />
+            <label for="admin-coupon-start">Start (optional)</label>
+            <input id="admin-coupon-start" class="admin-date" type="datetime-local" />
+            <label for="admin-coupon-end">End (optional)</label>
+            <input id="admin-coupon-end" class="admin-date" type="datetime-local" />
+            <label class="admin-switch-row">
+              <input id="admin-coupon-active" type="checkbox" checked />
+              <span>Active</span>
+            </label>
+            <div class="admin-product-actions">
+              <button id="admin-coupon-save" class="btn-outline" type="submit">Save Coupon</button>
+              <button id="admin-coupon-clear" class="btn-outline" type="button">Clear</button>
+            </div>
+          </form>
+          <p id="admin-coupon-note" class="admin-product-note"></p>
+          <div class="admin-table-wrap">
+            <table class="admin-orders-table" aria-label="Coupons">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Type</th>
+                  <th>Value</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-coupons-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-marketing-card admin-marketing-card-wide">
+          <h3>Welcome Modal</h3>
+          <form id="admin-site-experience-form" class="admin-product-form">
+            <p class="admin-field-help">
+              Control the first promo or product message users see after they sign in. Personal session lock choices now live in each user's Settings page.
+            </p>
+
+            <label class="admin-switch-row">
+              <input id="admin-site-modal-enabled" type="checkbox" />
+              <span>Show welcome modal after login</span>
+            </label>
+
+            <label for="admin-site-modal-title">Modal Title</label>
+            <input id="admin-site-modal-title" class="admin-input" type="text" placeholder="Fresh arrivals this week" />
+
+            <label for="admin-site-modal-message">Modal Message</label>
+            <textarea id="admin-site-modal-message" class="admin-textarea" rows="4" placeholder="Share a short offer, flash sale, or product update."></textarea>
+
+            <label for="admin-site-modal-image">Modal Image URL or Path</label>
+            <input id="admin-site-modal-image" class="admin-input" type="text" placeholder="images/beulah-logop.jpg or https://..." />
+
+            <label for="admin-site-modal-image-file">Upload Modal Image</label>
+            <input id="admin-site-modal-image-file" class="admin-input" type="file" accept="image/*" />
+            <img id="admin-site-modal-image-preview" class="admin-product-image-preview" alt="Modal image preview" hidden />
+
+            <label for="admin-site-modal-button-label">Modal Button Label (optional)</label>
+            <input id="admin-site-modal-button-label" class="admin-input" type="text" placeholder="Shop now" />
+
+            <label for="admin-site-modal-button-url">Modal Button Link (optional)</label>
+            <input id="admin-site-modal-button-url" class="admin-input" type="text" placeholder="shop.html or https://..." />
+
+            <div class="admin-product-actions">
+              <button id="admin-site-experience-save" class="btn-outline" type="submit">Save / Edit Welcome Modal</button>
+              <button id="admin-site-experience-deactivate" class="btn-outline" type="button">Deactivate Modal</button>
+              <button id="admin-site-experience-delete" class="btn-outline btn-danger" type="button">Delete Modal</button>
+              <button id="admin-site-experience-clear" class="btn-outline" type="button">Reload Saved Values</button>
+            </div>
+          </form>
+          <p id="admin-site-experience-note" class="admin-product-note"></p>
+        </section>
+      </div>
+    </section>
+  </section>
+</main>
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/dashboard-admin.js"></script>
+</body>
+</html>

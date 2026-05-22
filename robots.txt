@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Private/account pages
+Disallow: /auth.html
+Disallow: /forgot-password.html
+Disallow: /settings.html
+Disallow: /dashboard.html
+Disallow: /checkout.html
+Disallow: /success.html
+
+Sitemap: https://beulah-foods-store.pages.dev/sitemap.xml

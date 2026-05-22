@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beulah Foods offers healthy Nigerian staples including plantain flour, rice flour, and traditional ingredients with easy online ordering.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://beulahfoods.com/">
+  <meta property="og:title" content="Beulah Foods | Eat Healthy, Live Healthy">
+  <meta property="og:description" content="Shop healthy Nigerian staples and flours from Beulah Foods.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://beulahfoods.com/">
+  <meta property="og:image" content="https://beulahfoods.com/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Beulah Foods | Eat Healthy, Live Healthy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+  <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn">Log Out</button>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="#" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<section class="hero home-hero">
+  <div class="home-hero-copy">
+    <p class="home-hero-kicker">Healthy Nigerian staples, ready for your kitchen</p>
+    <h1>Eat healthy with trusted everyday staples.</h1>
+    <p>From wholesome flours to trusted pantry essentials, Beulah Foods helps you shop well, cook confidently, and serve your family with better everyday choices.</p>
+    <div class="home-hero-actions">
+      <a href="shop.html" class="btn">Shop the Full Store</a>
+      <a href="#home-featured" class="btn secondary">See Featured Picks</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-section home-trust-strip" aria-label="Why customers choose Beulah Foods">
+  <article class="home-trust-card">
+    <strong>Wholesome staples you can trust</strong>
+    <p>Carefully selected products for nourishing family meals, everyday convenience, and consistent quality.</p>
+  </article>
+  <article class="home-trust-card">
+    <strong>Traditional ingredients, modern convenience</strong>
+    <p>From plantain flour to pantry essentials, enjoy familiar Nigerian foods with a smooth, reliable online shopping experience.</p>
+  </article>
+  <article class="home-trust-card">
+    <strong>Fresh updates and useful offers</strong>
+    <p>Stay informed about new arrivals, flash sales, and practical food tips from Beulah Foods.</p>
+  </article>
+</section>
+
+<section id="home-featured" class="home-section">
+  <div class="home-section-head">
+    <div>
+      <p class="admin-kicker">Featured Products</p>
+      <h2>Start with a few strong picks</h2>
+      <p class="home-section-copy">Begin with a few customer favourites, then explore the full range when you are ready to shop more.</p>
+    </div>
+    <a href="shop.html" class="btn-outline">Browse All Products</a>
+  </div>
+
+  <div id="home-featured-products" class="product-list"></div>
+  <p id="home-featured-empty" class="admin-empty-state">Featured products will appear here once the store has active products.</p>
+</section>
+
+<section class="home-section home-category-band">
+  <div class="home-section-head">
+    <div>
+      <p class="admin-kicker">Shop Shortcuts</p>
+      <h2>Guide customers by what they need</h2>
+    </div>
+  </div>
+
+  <div class="home-category-grid">
+    <article class="home-category-card">
+      <h3>Healthy flours</h3>
+      <p>Plantain flour, rice flour, and other staples for swallow, baking, and lighter everyday meals.</p>
+      <a class="footer-link" href="shop.html">Open shop</a>
+    </article>
+    <article class="home-category-card">
+      <h3>Soup and stew boosters</h3>
+      <p>Traditional seasonings and ingredients that help customers get straight to what they actually cook with.</p>
+      <a class="footer-link" href="shop.html">Explore pantry items</a>
+    </article>
+    <article class="home-category-card">
+      <h3>Family stock-up</h3>
+      <p>Ideal for repeat buyers who want reliable staples, quick reorders, and clear in-stock information.</p>
+      <a class="footer-link" href="shop.html">View full stock</a>
+    </article>
+  </div>
+</section>
+
+<section class="home-section home-story-grid">
+  <article class="home-story-card home-story-primary">
+    <p class="admin-kicker">Why Families Choose Beulah Foods</p>
+    <h2>Good food starts with ingredients you can trust.</h2>
+    <p>We believe healthy living should feel practical, familiar, and deeply rooted in the foods people already love. That is why we focus on quality staples, honest presentation, and a shopping experience that feels simple from first click to final checkout.</p>
+    <a href="contact.html" class="btn-outline">Talk to us about wholesale orders</a>
+  </article>
+  <article class="home-story-card">
+    <p class="admin-kicker">What You Can Expect</p>
+    <ul class="home-bullet-list">
+      <li>A curated selection of nourishing everyday staples</li>
+      <li>Clear product information and stock visibility</li>
+      <li>Helpful updates, recipes, and food tips from our blog</li>
+      <li>A smooth path from discovery to checkout</li>
+    </ul>
+  </article>
+</section>
+
+<section class="home-section home-blog-shell">
+  <div class="home-section-head">
+    <div>
+      <p class="admin-kicker">From The Blog</p>
+      <h2>Recent stories and updates</h2>
+      <p class="home-section-copy">Explore practical ideas, product updates, and helpful stories that help you get more from the foods you buy.</p>
+    </div>
+    <a href="blog.html" class="btn-outline">Open Blog</a>
+  </div>
+
+  <div id="home-blog-list" class="blog-grid"></div>
+  <p id="home-blog-empty" class="admin-empty-state">No blog posts are published yet.</p>
+</section>
+
+<section class="home-section home-final-cta">
+  <div>
+    <p class="admin-kicker">Ready To Order?</p>
+    <h2>Ready to stock your kitchen?</h2>
+    <p>Explore our full range and order the staples your home needs with confidence.</p>
+  </div>
+  <div class="home-hero-actions">
+    <a href="shop.html" class="btn">Go to Shop</a>
+    <a href="blog.html" class="btn secondary home-blog-cta">Read the Blog</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/home-page.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read Beulah Foods stories, health tips, and product updates." />
+  <meta name="robots" content="index,follow" />
+  <title>Blog | Beulah Foods</title>
+  <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn">Log Out</button>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="settings.html" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<main class="blog-page">
+  <section class="blog-hero">
+    <p class="blog-kicker">From Beulah Foods</p>
+    <h1>Healthy Living Journal</h1>
+    <p>Tips, recipes, and trusted food knowledge to help your family eat well.</p>
+  </section>
+
+  <section class="blog-list-shell">
+    <input id="blog-search" class="admin-input blog-search" type="search" placeholder="Search blog posts..." aria-label="Search blog posts" />
+
+    <article id="blog-featured" class="blog-featured" hidden></article>
+    <div id="blog-empty" class="admin-empty-inline" hidden>No published posts yet.</div>
+    <section id="blog-list" class="blog-grid" aria-live="polite"></section>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/blog.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+</body>
+</html>

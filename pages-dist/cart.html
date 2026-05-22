@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review items in your Beulah Foods cart before checkout.">
+    <meta name="robots" content="noindex,nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cart | Beulah Foods</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+
+<body>
+
+<!-- HEADER -->
+    <header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+
+ 
+  </nav>
+    
+    <!-- Sign In / Sign Up link – shows when not logged in -->
+<div class="user-area" id="guest-area">
+  <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+</div>
+
+<!-- This shows only when logged in -->
+<div id="logged-in-area" style="display:none; align-items:center; gap:12px; color:white;">
+  <span>Hi, <span id="user-name">User</span></span>
+ <button id="logout-btn" class="btn-glass">Log Out</button>
+</div>
+
+    <!-- Dropdown menu (hidden by default) -->
+    <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+      <p id="user-greeting" class="greeting">Hi, Guest</p>
+      <a href="#" class="dropdown-item">My Account</a>
+      <button class="dropdown-item logout">Logout</button>
+    </div>
+</header>
+
+
+    <section class="cart-page">
+  <h2>Your Cart</h2>
+
+  <div id="cart-items" class="cart-list"></div>
+
+  <h3 id="cart-total">Total: ₦0</h3>
+  <p id="cart-stock-note" class="cart-stock-note" hidden></p>
+
+ <button class="pay-btn" id="go-to-checkout">
+  Proceed to Checkout
+</button>
+</section>
+
+    <footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/announcements.js"></script>
+
+    <script src="js/hamburger.js"></script>
+    <!-- Add any other scripts here -->
+
+    <!-- PASTE THE AUTH MODAL HERE in EVERY HTML FILE -->
+   <div id="auth-modal" class="auth-modal hidden">
+    <div class="auth-modal-content" style="background:#ffffff;">
+       <button class="auth-close">×</button>
+        <h2 id="modal-title">Sign In</h2>
+        <form id="auth-form">
+       <input type="password" id="password-input" class="auth-input" placeholder="Password" required>
+        
+       <button id="auth-submit" class="btn auth-submit">Sign In</button>
+        </form>
+        <p style="margin: 16px 0;">
+<button id="toggle-mode" class="auth-toggle">
+Create new account instead
+</button>
+        </p>
+        
+        <hr style="margin: 20px 0;">
+        
+       <button id="google-btn" class="google-btn">
+          Continue with Google
+        </button>
+      </div>
+    </div>
+
+  <script>
+  // Dropdown close handler can be added here if needed.
+  </script>
+
+
+
+<script>
+document.getElementById("go-to-checkout")?.addEventListener("click", () => {
+  window.__beulahPlayTapSound?.("checkout");
+  window.__beulahShowPageLoader?.();
+  window.location.href = "checkout.html";
+});
+</script>
+
+<script type="module" src="js/firebase-init.js"></script>
+</body>
+</html>
+
+
+
+

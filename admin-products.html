@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beulah Foods admin products workspace." />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin Products | Beulah Foods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+  <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body class="admin-control-body" data-admin-shell="true" data-admin-view="products">
+<header class="admin-topbar">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area admin-logo-area">
+      <img src="images/beulah-logop.jpg" alt="Beulah Foods Admin">
+      <div class="admin-brand-copy">
+        <span class="brand-text">Beulah Admin</span>
+        <span class="admin-brand-sub">Products</span>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="dashboard.html">Overview</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-products.html" class="active">Products</a></li>
+      <li><a href="admin-marketing.html">Marketing</a></li>
+      <li><a href="admin-blog.html">Blog</a></li>
+    </ul>
+  </nav>
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In</a>
+  </div>
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn-glass" type="button">Log Out</button>
+    </div>
+  </div>
+</header>
+<main class="admin-page">
+  <section class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="admin-kicker">Catalog Workspace</p>
+        <h1>Products</h1>
+        <p>Manage stock, pricing, flash sale windows, images, and storefront visibility.</p>
+      </div>
+      <div class="admin-header-actions">
+        <button id="admin-product-seed-btn" class="btn-outline" type="button">Import Defaults</button>
+        <button id="admin-product-new-btn" class="btn-outline" type="button">New Product</button>
+        <button id="admin-product-delete-all-btn" class="btn-outline" type="button">Delete All Products</button>
+      </div>
+    </header>
+    <p id="admin-access-note" class="admin-access-note"></p>
+    <button id="admin-bootstrap-btn" class="btn-outline admin-bootstrap-btn" style="display:none;">Activate Admin Access</button>
+    <section id="admin-products-section" class="admin-products admin-products-standalone">
+      <p id="admin-product-note" class="admin-product-note"></p>
+      <form id="admin-product-form" class="admin-product-form" hidden>
+        <input id="admin-product-id" type="hidden" />
+        <label for="admin-product-name">Name</label>
+        <input id="admin-product-name" class="admin-input" type="text" required />
+        <label for="admin-product-price">Price (NGN)</label>
+        <input id="admin-product-price" class="admin-input" type="number" min="1" required />
+        <label for="admin-product-stock">Stock Quantity (optional)</label>
+        <input id="admin-product-stock" class="admin-input" type="number" min="0" step="1" placeholder="Leave empty for untracked stock" />
+        <p class="admin-field-help">Set 0 for Out of Stock. Leave empty to keep stock untracked.</p>
+        <label for="admin-product-sale-price">Flash Sale Price (optional)</label>
+        <input id="admin-product-sale-price" class="admin-input" type="number" min="1" placeholder="Leave empty for no sale" />
+        <label for="admin-product-sale-start">Sale Start (optional)</label>
+        <input id="admin-product-sale-start" class="admin-date" type="datetime-local" />
+        <label for="admin-product-sale-end">Sale End (optional)</label>
+        <input id="admin-product-sale-end" class="admin-date" type="datetime-local" />
+        <label for="admin-product-image">Image Path / URL</label>
+        <input id="admin-product-image" class="admin-input" type="text" placeholder="images/new-product.jpg" />
+        <label for="admin-product-image-file">Or Upload Image</label>
+        <input id="admin-product-image-file" class="admin-input" type="file" accept="image/*" capture="environment" />
+        <p class="admin-field-help">Choose a clear product photo. It will be compressed automatically.</p>
+        <img id="admin-product-image-preview" class="admin-product-image-preview" alt="Product preview" hidden />
+        <label for="admin-product-description">Description</label>
+        <textarea id="admin-product-description" class="admin-textarea" rows="3"></textarea>
+        <label class="admin-switch-row">
+          <input id="admin-product-active" type="checkbox" checked />
+          <span>Active (visible to customers)</span>
+        </label>
+        <div class="admin-product-actions">
+          <button id="admin-product-save-btn" class="btn-outline" type="submit">Save Product</button>
+          <button id="admin-product-cancel-btn" class="btn-outline" type="button">Cancel</button>
+        </div>
+      </form>
+      <div class="admin-table-wrap">
+        <table class="admin-orders-table" aria-label="Products list">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Flash Sale</th>
+              <th>Status</th>
+              <th>Updated</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-products-body"></tbody>
+        </table>
+      </div>
+      <p id="admin-products-empty" class="admin-empty-state">No products found.</p>
+    </section>
+  </section>
+</main>
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/dashboard-admin.js"></script>
+</body>
+</html>

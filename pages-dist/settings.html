@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage your Beulah Foods profile, address, and notification settings.">
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Settings | Beulah Foods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+      <li class="auth-settings-item"><a href="settings.html" class="active">Settings</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn">Log Out</button>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="settings.html" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<main class="settings-page settings-page-glass">
+  <section class="settings-card settings-card-glass">
+    <div class="settings-head settings-head-glass">
+      <h1>Account Settings</h1>
+      <p>Update your profile, delivery details, and notification preferences.</p>
+    </div>
+
+    <div class="settings-glass-layout">
+      <aside class="settings-account-info settings-account-info-glass">
+        <h2>Account Info</h2>
+        <div class="settings-account-grid">
+          <p><span>Sign-in Provider</span><strong id="account-provider">-</strong></p>
+          <p><span>Email Verified</span><strong id="account-email-verified">-</strong></p>
+          <p><span>Account Created</span><strong id="account-created">-</strong></p>
+          <p><span>Last Sign-in</span><strong id="account-last-signin">-</strong></p>
+        </div>
+      </aside>
+
+      <form id="settings-form" class="settings-form settings-form-glass">
+        <div class="settings-grid">
+          <div class="settings-field">
+            <label for="settings-name">Full Name</label>
+            <input type="text" id="settings-name" autocomplete="name" placeholder="Your full name" />
+          </div>
+
+          <div class="settings-field">
+            <label for="settings-email">Email</label>
+            <input type="email" id="settings-email" autocomplete="email" placeholder="you@example.com" />
+            <p class="settings-hint">If you change this, you will be sent a verification link to the new email.</p>
+          </div>
+
+          <div class="settings-field">
+            <label for="settings-phone">Phone Number</label>
+            <input type="tel" id="settings-phone" autocomplete="tel" placeholder="e.g. 08012345678" />
+          </div>
+
+          <div class="settings-field">
+            <label for="settings-city">City</label>
+            <input type="text" id="settings-city" placeholder="Lagos" />
+          </div>
+
+          <div class="settings-field full">
+            <label for="settings-address">Default Delivery Address</label>
+            <textarea id="settings-address" rows="3" placeholder="Street, area, landmark"></textarea>
+          </div>
+        </div>
+
+        <fieldset class="settings-checks">
+          <legend>Notifications</legend>
+          <label><input type="checkbox" id="notify-email" /> Email order updates</label>
+          <label><input type="checkbox" id="notify-whatsapp" /> WhatsApp order updates</label>
+        </fieldset>
+
+        <div class="settings-security-row">
+          <p class="settings-security-copy">Need to change your password?</p>
+          <a href="forgot-password.html" class="btn-outline settings-reset-link">Reset Password</a>
+        </div>
+
+        <button type="submit" class="btn settings-save-btn">Save Settings</button>
+        <p id="settings-status" class="settings-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="settings-card settings-card-glass settings-session-card">
+    <div class="settings-head settings-head-glass">
+      <h2>Session Security</h2>
+      <p>Choose how often this device should ask you to unlock your account after you leave or stay inactive.</p>
+    </div>
+
+    <form id="settings-session-form" class="settings-form settings-form-glass settings-session-form">
+      <fieldset class="settings-checks settings-session-options">
+        <legend>Password Request</legend>
+        <label>
+          <input type="radio" name="session-mode" id="session-mode-none" value="none" checked />
+          No password request
+        </label>
+        <label>
+          <input type="radio" name="session-mode" id="session-mode-inactivity" value="lock_after_inactivity" />
+          Lock after inactivity
+        </label>
+        <label>
+          <input type="radio" name="session-mode" id="session-mode-return" value="lock_on_return" />
+          Lock when I leave and return
+        </label>
+      </fieldset>
+
+      <div id="session-inactivity-group" class="settings-field settings-session-minutes" hidden>
+        <label for="session-inactivity-minutes">Minutes of inactivity</label>
+        <input type="number" id="session-inactivity-minutes" min="1" max="120" value="5" />
+        <p class="settings-hint">After this idle time, the site asks you to unlock with your password or Google re-check.</p>
+      </div>
+
+      <button type="submit" class="btn settings-save-btn">Save Session Security</button>
+      <p id="settings-session-status" class="settings-status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="settings-card settings-card-glass settings-transactions-card">
+    <div class="settings-head settings-head-glass">
+      <h2>Recent Transactions</h2>
+      <p>See your latest order references, payment status, and totals without opening the admin area.</p>
+    </div>
+
+    <div class="settings-transactions-summary" aria-label="Transaction summary">
+      <article class="settings-transaction-stat">
+        <span>Loaded Orders</span>
+        <strong id="settings-orders-total">0</strong>
+      </article>
+      <article class="settings-transaction-stat">
+        <span>Paid</span>
+        <strong id="settings-orders-paid">0</strong>
+      </article>
+      <article class="settings-transaction-stat">
+        <span>Pending</span>
+        <strong id="settings-orders-pending">0</strong>
+      </article>
+    </div>
+
+    <p id="settings-orders-status" class="settings-status" aria-live="polite"></p>
+
+    <div class="settings-transactions-wrap">
+      <table class="settings-transactions-table" aria-label="Recent transactions">
+        <thead>
+          <tr>
+            <th>Order Ref</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Receipt</th>
+          </tr>
+        </thead>
+        <tbody id="settings-orders-body"></tbody>
+      </table>
+    </div>
+    <div class="settings-transactions-footer">
+      <button id="settings-orders-load-more" class="btn-outline" type="button">Load Older Transactions</button>
+      <p id="settings-orders-range-note" class="settings-hint"></p>
+    </div>
+    <p id="settings-orders-empty" class="admin-empty-state">No recent transactions yet.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/settings.js"></script>
+
+</body>
+</html>

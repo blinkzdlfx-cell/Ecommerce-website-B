@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
+
+    // Fallback admin check for projects without custom claims.
+    // Replace/add emails below to match your real admin accounts.
+    function isAdminEmail() {
+      return signedIn()
+        && request.auth.token.email != null
+        && request.auth.token.email in [
+          "beulahfoods2025@gmail.com", "tadenelson2016@gmail.com"
+        ];
+    }
+
+    match /users/{uid}/settings/{docId} {
+      allow read, write: if isOwner(uid);
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin() || isAdminEmail();
+    }
+
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isAdmin() || isAdminEmail();
+    }
+
+    match /site_settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin() || isAdminEmail();
+    }
+
+    match /coupons/{couponCode} {
+      allow read: if signedIn();
+      allow write: if isAdmin() || isAdminEmail();
+    }
+
+    match /blog_posts/{postId} {
+      allow read: if resource.data.status == "published" || isAdmin() || isAdminEmail();
+      allow write: if isAdmin() || isAdminEmail();
+    }
+
+    match /orders/{orderRef} {
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow create, update, delete: if false; // backend functions only
+    }
+
+    match /admin_logs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false; // backend functions only
+    }
+  }
+}

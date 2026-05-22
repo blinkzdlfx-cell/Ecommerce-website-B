@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in or create a Beulah Foods account to shop and manage orders.">
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Sign In | Beulah Foods</title>
+  <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-box">
+      <div class="auth-brand">
+        <img src="images/beulah-logop.jpg" alt="Beulah Foods Logo" />
+        <div>
+          <p class="auth-brand-label">Beulah Foods</p>
+          <h1 id="auth-title">Sign In</h1>
+          <p class="auth-subtitle">Healthy Nigerian staples, delivered fresh.</p>
+        </div>
+      </div>
+
+      <p id="auth-status" class="auth-status" aria-live="polite" hidden></p>
+
+      <form id="auth-form" class="auth-form">
+        <div id="name-group" class="auth-name-group" hidden>
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Your full name" autocomplete="name" />
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required />
+        <a href="forgot-password.html" class="auth-forgot-link">Forgot password?</a>
+
+        <button type="submit" class="btn auth-continue">Continue</button>
+      </form>
+
+      <div class="auth-divider" aria-hidden="true">
+        <span>or</span>
+      </div>
+
+      <button id="google-signin" type="button" class="google-btn auth-google-btn">
+        Continue with Google
+      </button>
+
+      <p id="toggle-auth" class="auth-toggle-text">
+        Don't have an account? <span>Create one</span>
+      </p>
+
+      <p class="auth-legal">
+        By continuing, you agree to our
+        <a href="terms.html">Terms of Service</a>
+        and
+        <a href="privacy.html">Privacy Policy</a>.
+      </p>
+    </section>
+  </main>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

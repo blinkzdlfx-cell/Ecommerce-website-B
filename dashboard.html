@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beulah Foods admin control center for managing orders, products, marketing, and blog content." />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin Control Center | Beulah Foods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+  <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body class="admin-control-body" data-admin-shell="true" data-admin-view="overview">
+
+<header class="admin-topbar">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area admin-logo-area">
+      <img src="images/beulah-logop.jpg" alt="Beulah Foods Admin">
+      <div class="admin-brand-copy">
+        <span class="brand-text">Beulah Admin</span>
+        <span class="admin-brand-sub">Control Center</span>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="dashboard.html" class="active">Overview</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-marketing.html">Marketing</a></li>
+      <li><a href="admin-blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn-glass" type="button">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin-page">
+  <section class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="admin-kicker">Beulah Foods Admin</p>
+        <h1>Control Center</h1>
+        <p>Use dedicated pages to manage the store without scrolling through one long dashboard.</p>
+      </div>
+
+      <div class="admin-header-actions">
+        <a class="btn-outline" href="admin-products.html">Add Product</a>
+        <a class="btn-outline" href="admin-orders.html">Open Orders</a>
+      </div>
+    </header>
+
+    <p id="admin-access-note" class="admin-access-note"></p>
+    <p id="admin-results-meta" class="admin-results-meta" aria-live="polite"></p>
+    <button id="admin-bootstrap-btn" class="btn-outline admin-bootstrap-btn" style="display:none;">
+      Activate Admin Access
+    </button>
+
+    <section id="admin-stats" class="admin-stats" aria-label="Order stats">
+      <article class="admin-stat-card">
+        <span>Total Orders</span>
+        <strong id="stat-total">0</strong>
+      </article>
+      <article class="admin-stat-card">
+        <span>Paid</span>
+        <strong id="stat-paid">0</strong>
+      </article>
+      <article class="admin-stat-card">
+        <span>Pending</span>
+        <strong id="stat-pending">0</strong>
+      </article>
+    </section>
+
+    <section class="admin-overview-grid" aria-label="Admin sections">
+      <a class="admin-overview-card" href="admin-orders.html">
+        <span>Orders</span>
+        <strong>Payments</strong>
+        <p>Filter transaction history, search customers, and check payment status quickly.</p>
+        <div class="admin-overview-meta">Open the full orders workspace</div>
+      </a>
+
+      <a class="admin-overview-card" href="admin-products.html">
+        <span>Products</span>
+        <strong id="overview-products-count">0 tracked</strong>
+        <p>Update stock, prices, flash sales, images, and catalog visibility in one place.</p>
+        <div class="admin-overview-meta">Manage the storefront catalog</div>
+      </a>
+
+      <a class="admin-overview-card" href="admin-marketing.html">
+        <span>Marketing</span>
+        <strong>Campaigns</strong>
+        <p>Control homepage announcements and coupon campaigns without touching product data.</p>
+        <div class="admin-overview-meta"><span id="overview-announcements-count">0 live</span> - <span id="overview-coupons-count">0 active</span></div>
+      </a>
+
+      <a class="admin-overview-card" href="admin-blog.html">
+        <span>Blog</span>
+        <strong id="overview-blog-count">0 published</strong>
+        <p>Draft, publish, and update blog posts separately from orders and promotions.</p>
+        <div class="admin-overview-meta">Open the content workspace</div>
+      </a>
+    </section>
+
+    <section id="admin-orders-section" class="admin-products">
+      <header class="admin-products-head admin-section-head">
+        <div>
+          <h2>Latest Orders</h2>
+          <p>Recent payment activity from the live store.</p>
+        </div>
+        <div class="admin-products-actions">
+          <a class="btn-outline" href="admin-orders.html">View All Orders</a>
+        </div>
+      </header>
+
+      <div class="admin-table-wrap">
+        <table class="admin-orders-table" aria-label="Latest orders list">
+          <thead>
+            <tr>
+              <th>Order Ref</th>
+              <th>Customer</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-body"></tbody>
+        </table>
+      </div>
+      <p id="admin-empty-state" class="admin-empty-state">No orders found.</p>
+    </section>
+  </section>
+</main>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/dashboard-admin.js"></script>
+
+</body>
+</html>

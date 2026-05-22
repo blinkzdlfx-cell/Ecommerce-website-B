@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy Policy for Beulah Foods." />
+  <meta name="robots" content="index,follow" />
+  <title>Privacy Policy | Beulah Foods</title>
+  <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+  </nav>
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn">Log Out</button>
+    </div>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="settings.html" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<main class="legal-page">
+  <section class="legal-shell">
+    <h1>Privacy Policy</h1>
+    <p class="legal-meta">Effective date: March 5, 2026</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>We collect account information (such as name and email), order details, and delivery preferences needed to fulfill your requests.</p>
+
+    <h2>2. How We Use Information</h2>
+    <p>Your information is used to process orders, communicate updates, improve service quality, and support account security.</p>
+
+    <h2>3. Payment Processing</h2>
+    <p>Payments are processed through secure third-party providers. We do not store full payment card details on this website.</p>
+
+    <h2>4. Data Sharing</h2>
+    <p>We only share information with trusted providers needed for payment, delivery, and service operations, or when required by law.</p>
+
+    <h2>5. Contact</h2>
+    <p>For privacy questions, contact <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+</body>
+</html>

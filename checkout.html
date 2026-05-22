@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure checkout for your Beulah Foods order.">
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Checkout | Beulah Foods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-area" id="guest-area">
+    <a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+  </div>
+
+  <div id="logged-in-area" style="display:none;">
+    <div class="desktop-logged-in" style="display:flex; align-items:center; gap:12px; color:white;">
+      <span>Hi, <span id="user-name">User</span></span>
+      <button id="logout-btn" class="btn-glass">Log Out</button>
+    </div>
+
+    <div class="mobile-logged-in" style="display:none;">
+      <span>Hi, <span id="user-name-mobile">User</span></span>
+      <button id="logout-btn-mobile" class="btn">Log Out</button>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+    <p id="user-greeting" class="greeting">Hi, Guest</p>
+    <a href="#" class="dropdown-item">My Account</a>
+    <button class="dropdown-item logout">Logout</button>
+  </div>
+</header>
+
+<main class="checkout-page">
+  <a href="cart.html" class="back-link">Back to Cart</a>
+  <h2>Checkout</h2>
+  <p id="checkout-feedback" class="checkout-feedback" aria-live="polite" hidden></p>
+
+  <div class="checkout-layout">
+
+    <!-- LEFT: Items -->
+    <section class="checkout-items">
+      <h3>Your Items</h3>
+      <div id="checkout-items" class="cart-list"></div>
+    </section>
+
+    <!-- RIGHT: Summary -->
+    <aside class="checkout-summary">
+      <h3>Order Summary</h3>
+
+<div class="summary-row">
+  <span>Subtotal</span>
+  <span id="checkout-total">NGN 0</span>
+</div>
+
+<div class="coupon-box">
+  <label for="coupon-code">Discount Code</label>
+  <div class="coupon-row">
+    <input id="coupon-code" type="text" placeholder="Enter code e.g. SAVE10" />
+    <button id="apply-coupon-btn" class="btn-outline" type="button">Apply</button>
+  </div>
+  <p id="coupon-feedback" class="coupon-feedback"></p>
+</div>
+
+<div class="delivery-box">
+  <h4>Delivery</h4>
+
+  <div class="summary-row">
+    <span>Location</span>
+    <span>Lagos (default)</span>
+  </div>
+
+  <div class="summary-row">
+    <span>Delivery Fee</span>
+    <span>To be confirmed</span>
+  </div>
+</div>
+
+<div class="summary-row">
+  <span>Discount</span>
+  <span id="checkout-discount">NGN 0</span>
+</div>
+
+<div class="summary-row total-row">
+  <strong>Total</strong>
+  <strong id="checkout-grand-total">NGN 0</strong>
+</div>
+
+<div class="checkout-action-stack">
+  <button id="confirm-pay-btn" class="pay-btn" disabled>Confirm & Pay</button>
+  <button id="cancel-payment-btn" class="btn-outline btn-danger checkout-cancel-btn" type="button">Cancel Payment</button>
+</div>
+    </aside>
+
+  </div>
+</main>
+
+<div class="order-ref-box">
+  <span class="label">Order Reference</span>
+  <strong id="order-ref">-</strong>
+</div>
+
+<div id="cancel-payment-modal" class="checkout-confirm-overlay" hidden aria-hidden="true">
+  <div class="checkout-confirm-card" role="dialog" aria-modal="true" aria-labelledby="cancel-payment-title">
+    <h3 id="cancel-payment-title">Cancel payment?</h3>
+    <p>If you continue, all items in your cart will be removed.</p>
+    <div class="checkout-confirm-actions">
+      <button id="cancel-payment-dismiss-btn" class="btn-outline" type="button">Keep Payment</button>
+      <button id="cancel-payment-confirm-btn" class="btn-outline btn-danger" type="button">Yes, Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/checkout-page.js"></script>
+<script type="module" src="js/checkout.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+PAYSTACK_SECRET_KEY=sk_test_xxx
+PAYSTACK_PUBLIC_KEY=pk_test_xxx
+PAYSTACK_WEBHOOK_SECRET=whsec_xxx
+FIREBASE_WEB_API_KEY=AIzaSyxxxxxxxxxxxxxxxxxxxx
+ADMIN_OWNER_EMAILS=you@example.com

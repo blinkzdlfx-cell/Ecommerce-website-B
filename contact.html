@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile-first -->
+  <meta name="description" content="Contact Beulah Foods for order help, delivery support, and product questions.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://beulahfoods.com/contact.html">
+  <meta property="og:title" content="Contact | Beulah Foods">
+  <meta property="og:description" content="Get support from Beulah Foods for your orders and deliveries.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://beulahfoods.com/contact.html">
+  <meta property="og:image" content="https://beulahfoods.com/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Contact Us - Beulah Foods</title>
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/beulah-logop.jpg">
+    <link rel="apple-touch-icon" href="images/beulah-logop.jpg">
+</head>
+<body>
+
+<!-- HEADER -->
+    <header class="site-header">
+  <div class="header-left">
+    <div class="hamburger" id="hamburger">Menu</div>
+
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Beulah Foods Logo">
+      <span class="brand-text">Beulah Foods</span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact / Help</a></li>
+    </ul>
+
+    <!-- Sign In / Sign Up link - shows when not logged in -->
+
+  </nav>
+
+<div class="user-area" id="guest-area">
+<a href="auth.html" class="btn-glass">Sign In / Sign Up</a>
+</div>
+
+<!-- This shows only when logged in -->
+<div id="logged-in-area" style="display:none; align-items:center; gap:12px; color:white;">
+  <span>Hi, <span id="user-name">User</span></span>
+ <button id="logout-btn" class="btn-glass">Log Out</button>
+</div>
+
+    <!-- Dropdown menu (hidden by default) -->
+    <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+      <p id="user-greeting" class="greeting">Hi, Guest</p>
+      <a href="#" class="dropdown-item">My Account</a>
+     <button class="dropdown-item logout">Logout</button>
+    </div>
+</header>
+
+<main class="contact-container premium-contact">
+  <section class="contact-hero">
+    <h1>Contact Beulah Foods</h1>
+    <p>We're here to help with orders, products, and all your healthy food needs. Reach out and experience premium service!</p>
+  </section>
+
+  <section class="contact-actions-cards">
+    <a href="https://wa.me/2347044845526" target="_blank" class="contact-card whatsapp" aria-label="Chat on WhatsApp">
+      <img src="images/social/whatsapp.png" alt="WhatsApp" />
+      <span>Chat on WhatsApp</span>
+    </a>
+    <a href="mailto:beulahfoods2025@gmail.com" class="contact-card email" aria-label="Send Email">
+      <img src="images/social/email.png" alt="Email" />
+      <span>Email Us</span>
+    </a>
+  </section>
+
+  <section class="contact-form-section">
+    <h2>Send Us a Message</h2>
+    <form class="contact-form" action="mailto:beulahfoods2025@gmail.com" method="POST" enctype="text/plain">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required aria-required="true">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required aria-required="true">
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+
+      <button type="submit" class="btn submit">Send Message</button>
+    </form>
+  </section>
+
+  <section class="map-section">
+    <h3>Visit Us</h3>
+    <p>22 Joshua Okeowo Street, Ikotun, Lagos, Nigeria</p>
+   <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.258!3d6.541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b0000000000%3A0x0!2sIkotun%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1708337999999!5m2!1sen!2sng"></iframe>
+    <p class="map-note">
+      We're located in Ikotun (near Dele-Ara Bus Stop / Abaranje Road area). Feel free to drop by or call ahead!<br>
+      Open: Mon-Sat, 9 AM - 5 PM (or by appointment)
+    </p>
+  </section>
+  <!-- Social Links - Clickable icons -->
+<div class="social-links">
+    <h3>Follow Us & Stay Connected</h3>
+    <div class="social-icons-grid">
+        <a href="https://wa.me/2347044845526" target="_blank" aria-label="WhatsApp" class="social-icon whatsapp">
+            <img src="images/social/whatsapp.png" alt="WhatsApp" loading="lazy">
+        </a>
+        <a href="https://www.instagram.com/beulahfoods" target="_blank" aria-label="Instagram" class="social-icon instagram">
+            <img src="images/social/instagram.png" alt="Instagram" loading="lazy">
+        </a>
+        <a href="https://www.facebook.com/beulahfoods" target="_blank" aria-label="Facebook" class="social-icon facebook">
+            <img src="images/social/facebook.png" alt="Facebook" loading="lazy">
+        </a>
+        <a href="https://www.tiktok.com/@beulahfoods" target="_blank" aria-label="TikTok" class="social-icon tiktok">
+            <img src="images/social/tiktok.png" alt="TikTok" loading="lazy">
+        </a>
+        <a href="https://twitter.com/beulahfoods" target="_blank" aria-label="Twitter/X" class="social-icon twitter">
+            <img src="images/social/twitter.png" alt="Twitter/X" loading="lazy">
+        </a>
+        <!-- Add more if needed, e.g. YouTube, LinkedIn -->
+    </div>
+</div>
+
+  <!-- Privacy Notice (ethical design) -->
+  <p class="privacy">We respect your privacy. Your data is used only for responding to enquiries. <a href="privacy.html">Privacy Policy</a></p>
+
+  <!-- Chatbot removed -->
+</main>
+
+<script>
+  // Dark Mode Toggle
+  const toggle = document.getElementById('dark-mode-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    });
+  }
+
+</script>
+
+
+
+<!-- Embedded Video - Adaptive inline player (vertical TikTok or horizontal) -->
+<div class="video-embed">
+    <h3>Discover Beulah Foods</h3>
+    <p>Watch this short video to see how we bring natural Nigerian staples to your table.</p>
+
+    <div class="embed-wrapper">
+        <!-- Your TikTok embed code - paste exactly as provided -->
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@beulahfoods_/video/7593679890596023559" data-video-id="7593679890596023559" >
+            <section>
+                <a target="_blank" title="@beulahfoods_" href="https://www.tiktok.com/@beulahfoods_?refer=embed">@beulahfoods_</a> 
+                beulahfoods_ looking for Beulah Foods on Google is simple. Chat with us and send us a dm for to get a taste of our finely processed organic food product eat healthy, live healthy. 
+                #beulahfoods #healthyfoods #organicfood #HealthyEating #naturalfoods 
+                <a title="nigerianfoods" target="_blank" href="https://www.tiktok.com/tag/nigerianfoods?refer=embed">#Nigerianfoods</a> 
+                <a target="_blank" title="original sound - Beulah Gain Nigeria Limited - Beulah Foods" href="https://www.tiktok.com/music/original-sound-Beulah-Gain-Nigeria-Limited-7593679927477799697?refer=embed">original sound - Beulah Gain Nigeria Limited - Beulah Foods</a> 
+            </section> 
+        </blockquote> 
+        <script async src="https://www.tiktok.com/embed.js"></script>
+    </div>
+</div>
+
+    <!-- OR for Instagram Reel (if that's your video): -->
+    <!-- <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/YOUR_REEL_ID/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">...</blockquote> -->
+    <!-- <script async src="//www.instagram.com/embed.js"></script> -->
+    <!-- PASTE THE AUTH MODAL HERE in EVERY HTML FILE -->
+    <div id="auth-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center;">
+      <div style="background: white; padding: 32px; border-radius: 16px; max-width: 420px; width: 90%; text-align: center; position: relative;">
+        <button onclick="document.getElementById('auth-modal').style.display='none'" style="position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer;">Close</button>
+        
+        <h2 id="modal-title">Sign In</h2>
+        <form id="auth-form">
+          <input type="password" id="password-input" placeholder="Password" required style="width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #ccc; border-radius: 8px;">
+          <button id="auth-submit" class="btn" style="width: 100%; margin: 16px 0;">Sign In</button>
+        </form>
+        <p style="margin: 16px 0;">
+          <button id="toggle-mode" style="background: none; border: none; color: #0066cc; cursor: pointer; text-decoration: underline;">Create new account instead</button>
+        </p>
+        
+        <hr style="margin: 20px 0;">
+        
+        <button id="google-btn" style="background: #4285F4; color: white; width: 100%; padding: 12px; border: none; border-radius: 8px; cursor: pointer;">
+          Continue with Google
+        </button>
+      </div>
+    </div>
+
+
+
+<footer class="site-footer">
+  <p class="footer-text">(c) 2026 Beulah Foods. All rights reserved.</p>
+  <p class="footer-contact">
+    WhatsApp:
+    <a class="footer-link" href="https://wa.me/2347044845526">07044845526</a>
+    |
+    Email:
+    <a class="footer-link" href="mailto:beulahfoods2025@gmail.com">beulahfoods2025@gmail.com</a>
+  </p>
+</footer>
+<script src="js/hamburger.js"></script>
+<script type="module" src="js/announcements.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
