@@ -1,4 +1,5 @@
 import { backendConfig } from "./backend-config.js";
+import { buildResponsiveImageMarkup } from "./script.js";
 
 const LOCAL_WORKER_URL = "http://127.0.0.1:8787";
 const PLACEHOLDER_TOKEN = "REPLACE_WITH_YOUR_WORKER_URL";
@@ -71,7 +72,7 @@ function renderFeatured(post) {
 
   const tags = Array.isArray(post.tags) ? post.tags.slice(0, 3) : [];
   featuredEl.innerHTML = `
-    <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" />
+    ${buildResponsiveImageMarkup(post.coverImage, post.title)}
     <div>
       <p class="blog-post-meta">Featured � ${formatDate(post.publishedAt || post.updatedAt)}</p>
       <h2>${escapeHtml(post.title)}</h2>
@@ -98,7 +99,7 @@ function renderList(posts) {
     const card = document.createElement("article");
     card.className = "blog-card";
     card.innerHTML = `
-      <img src="${safeImage(post.coverImage)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" />
+      ${buildResponsiveImageMarkup(post.coverImage, post.title)}
       <div class="blog-card-body">
         <p class="blog-post-meta">${formatDate(post.publishedAt || post.updatedAt)}</p>
         <h3>${escapeHtml(post.title)}</h3>

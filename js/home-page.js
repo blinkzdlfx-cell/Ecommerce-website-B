@@ -1,5 +1,5 @@
 import { backendConfig } from "./backend-config.js";
-import { formatNgn, getProductsList, loadProductCatalog } from "./script.js";
+import { buildResponsiveImageMarkup, formatNgn, getProductsList, loadProductCatalog } from "./script.js";
 
 const featuredProductsEl = document.getElementById("home-featured-products");
 const featuredEmptyEl = document.getElementById("home-featured-empty");
@@ -115,7 +115,7 @@ function renderFeaturedProducts() {
     const stockClass = product.inStock === false ? "out" : "in";
     const stockText = product.inStock === false ? "Out of Stock" : "In Stock";
     card.innerHTML = `
-      <img src="${safeImage(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" decoding="async">
+      ${buildResponsiveImageMarkup(product.image, product.name)}
       <h3>${escapeHtml(product.name)}</h3>
       <p class="price">${getProductPriceMarkup(product)}</p>
       <p class="product-stock ${stockClass}">${stockText}</p>
@@ -150,7 +150,7 @@ function renderBlogPosts(posts) {
     card.className = "blog-card";
     const thumbnail = "images/beulah-logop.jpg";
     card.innerHTML = `
-      <img src="${thumbnail}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">
+      ${buildResponsiveImageMarkup(post.coverImage, post.title)}
       <div class="blog-card-body">
         <p class="blog-post-meta">${formatDate(post.publishedAt || post.updatedAt)}</p>
         <h3>${escapeHtml(post.title)}</h3>

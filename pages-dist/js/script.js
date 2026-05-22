@@ -185,6 +185,30 @@ function safeImageSrc(value) {
   return "images/logo.png";
 }
 
+function getWebpVariant(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  if (/^(https?:\/\/|data:image\/)/i.test(raw)) return "";
+  if (/\.webp(?:[?#].*)?$/i.test(raw)) return raw;
+  return raw.replace(/\.(png|jpe?g)$/i, ".webp");
+}
+
+export function buildResponsiveImageMarkup(value, alt, options = {}) {
+  const src = safeImageSrc(value);
+  const webpSrc = getWebpVariant(src);
+  const altText = escapeHtml(alt || "Image");
+  const loading = escapeHtml(options.loading || "lazy");
+  const decoding = escapeHtml(options.decoding || "async");
+  const classAttr = options.className ? ` class="${escapeHtml(options.className)}"` : "";
+  const imgAttrs = `${classAttr} src="${escapeHtml(src)}" alt="${altText}" loading="${loading}" decoding="${decoding}"`;
+
+  if (webpSrc && webpSrc !== src) {
+    return `<picture><source srcset="${escapeHtml(webpSrc)}" type="image/webp"><img${imgAttrs}></picture>`;
+  }
+
+  return `<img${imgAttrs}>`;
+}
+
 function toProductMap(rows) {
   const map = {};
   (Array.isArray(rows) ? rows : []).forEach((row) => {
